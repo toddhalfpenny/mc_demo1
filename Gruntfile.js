@@ -172,48 +172,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // for changes to the node code
-        nodemon: {
-            dev: {
-                options: {
-                    file: 'server.js',
-                    nodeArgs: ['--debug'],
-                    watchedFolders: ['controllers', 'app'],
-                    env: {
-                        PORT: '3300'
-                    }
-                }
-            }
-        },
-
-        // server tests
-        simplemocha: {
-            options: {
-                globals: ['expect', 'sinon'],
-                timeout: 3000,
-                ignoreLeaks: false,
-                ui: 'bdd',
-                reporter: 'spec'
-            },
-
-            server: {
-                src: ['spec/spechelper.js', 'spec/**/*.test.js']
-            }
-        },
-
-        // mongod server launcher
-        shell: {
-            mongo: {
-                command: 'mongod',
-                options: {
-                    async: true
-                }
-            }
-        },
 
         concurrent: {
             dev: {
-                tasks: ['nodemon:dev', 'shell:mongo', 'watch:markup', 'watch:scripts', 'watch:less', 'watch:test'],
+                tasks: ['watch:markup', 'watch:scripts', 'watch:less', 'watch:test'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -252,13 +214,10 @@ module.exports = function(grunt) {
     grunt.registerTask('build:dev', ['clean:dev', 'browserify:app', 'browserify:test', 'jshint:dev', 'less:transpile', 'concat', 'copy:dev']);
     grunt.registerTask('build:prod', ['clean:prod', 'browserify:vendor', 'browserify:app', 'jshint:all', 'less:transpile', 'concat', 'cssmin', 'uglify', 'copy:prod']);
 
-    grunt.registerTask('heroku', ['init:dev', 'build:dev']);
 
-    grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
-    grunt.registerTask('test:server', ['simplemocha:server']);
-
+    grunt.registerTask('client', ['build:dev', 'concurrent:dev']);
     grunt.registerTask('test:client', ['karma:test']);
     grunt.registerTask('tdd', ['karma:watcher:start', 'concurrent:test']);
 
-    grunt.registerTask('test', ['test:server', 'test:client']);
+    grunt.registerTask('test', ['test:client']);
 };
