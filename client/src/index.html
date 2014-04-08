@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Marionette Contact Manager</title>
+<title>MC : Demo Expenses App</title>
 	<link href="./css/foundation-icons/foundation-icons.css" rel="stylesheet">
 	<link href="./css/MC5.css" rel="stylesheet">
+	<link href="./css/app.css" rel="stylesheet">
 </head>
 <body>
 <div class="off-canvas-wrap">
@@ -31,15 +32,14 @@
     </aside>
 
 	<div id="main-region" class="container">
-		<p>Here is static content in the web page, You'll notice that it gets
-	replaced by our app as soon as we start it.</p>
+		<p>App loading...</p>
 	</div>
  <!-- close the off-canvas menu -->
   <a class="exit-off-canvas"></a>
   </div>
 
 <script type="text/template" id="static-template">
-	<p>This is text that was rendered by our Marionette app.</p>
+	<p>Our app will go in here</p>
 </script>
 <script src="js/MC5.js"></script>
 </body>
@@ -49,23 +49,23 @@
 <script type="text/javascript">
 	var Backbone = require('backbone');
 	var Marionette = require('backbone.marionette');
-	var ContactManager = new Marionette.Application();
+	var ExpensesManager = new Marionette.Application();
 	var Foundation = require('foundation');
 
-	ContactManager.addRegions({
+	ExpensesManager.addRegions({
 		mainRegion: "#main-region"
 	});
 
-	ContactManager.StaticView = Marionette.ItemView.extend({
+	ExpensesManager.StaticView = Marionette.ItemView.extend({
 		template: "#static-template"
 	});
 
-	ContactManager.on("initialize:after", function(){
-		console.log("ContactManager has started!");
-		var staticView = new ContactManager.StaticView();
-		ContactManager.mainRegion.show(staticView);
+	ExpensesManager.on("initialize:after", function(){
+		console.log("ExpensesManager has started!");
+		var staticView = new ExpensesManager.StaticView();
+		ExpensesManager.mainRegion.show(staticView);
 	});
 	
-	ContactManager.start();
+	ExpensesManager.start();
 </script>
 </html>

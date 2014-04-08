@@ -94,6 +94,7 @@ module.exports = function(grunt) {
                 files: {
                     'build/<%= pkg.name %>.css': [
                         'client/styles/reset.css',
+                        'client/styles/app.css',
                         'client/requires/*/css/*',
                         'client/styles/less/main.less'
                     ]
