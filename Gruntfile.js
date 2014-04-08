@@ -52,7 +52,18 @@ module.exports = function(grunt) {
                                 backbone: 'Backbone',
                                 underscore: '_'
                             }
-                        }
+                        },
+                        modernizr : {
+                            path : 'client/requires/modernizr/js/modernizr.js',
+                            exports : 'Modernizr'
+                        },
+                        foundation : {
+                            path : 'client/requires/foundation/js/foundation.min.js',
+                            exports : 'foundation',
+                            depends : {
+                                modernizr : 'modernizr'
+                            }
+                    }
                     }
                 }
             },
