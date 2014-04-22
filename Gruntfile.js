@@ -63,17 +63,18 @@ module.exports = function(grunt) {
                             depends : {
                                 modernizr : 'modernizr'
                             }
-                    }
+                        }
                     }
                 }
             },
             app: {
                 files: {
-                    'build/app.js': ['client/src/main.js']
+                    'build/app.js': ['client/src/js/app.js']
                 },
                 options: {
                     transform: ['hbsfy'],
-                    external: ['jquery', 'underscore', 'backbone', 'backbone.marionette']
+                    external: ['jquery', 'underscore', 'backbone', 'backbone.marionette',
+                                'foundation','modernizr']
                 }
             },
             test: {

@@ -7,63 +7,6 @@
 	<link href="./css/app.css" rel="stylesheet">
 </head>
 <body>
-<div class="off-canvas-wrap">
-  <div class="inner-wrap">
-
-   <nav class="tab-bar">
-      <section class="left-small">
-        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
-      </section>
-
-      <section class="middle tab-bar-section">
-        <h1 class="title">Expenses</h1>
-      </section>
-    </nav>
-      <!-- Off Canvas Menu -->
-    <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-        <li><label>Expenses</label></li>
-        <li><a href="#expenses/add">Add new</a></li>
-        <li><label>Settings</label></li>
-        <li><a href="#">Logout</a></li>
-      </ul>
-    </aside>
-
-	<div id="main-region" class="container">
-		<p>App loading...</p>
-	</div>
- <!-- close the off-canvas menu -->
-  <a class="exit-off-canvas"></a>
-  </div>
-</div>
-<script type="text/template" id="static-template">
-	<p>Our app will go in here</p>
-</script>
 <script src="js/MC5.js"></script>
 </body>
-<script>
-  $(document).foundation();
-</script>
-<script type="text/javascript">
-	var Backbone = require('backbone');
-	var Marionette = require('backbone.marionette');
-	var ExpensesManager = new Marionette.Application();
-	var Foundation = require('foundation');
-
-	ExpensesManager.addRegions({
-		mainRegion: "#main-region"
-	});
-
-	ExpensesManager.StaticView = Marionette.ItemView.extend({
-		template: "#static-template"
-	});
-
-	ExpensesManager.on("initialize:after", function(){
-		console.log("ExpensesManager has started!");
-		var staticView = new ExpensesManager.StaticView();
-		ExpensesManager.mainRegion.show(staticView);
-	});
-	
-	ExpensesManager.start();
-</script>
 </html>
