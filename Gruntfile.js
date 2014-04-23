@@ -158,16 +158,16 @@ module.exports = function(grunt) {
 
         // for changes to the front-end code
         watch: {
-	    markup: {
-		files: ['client/src/*.html'],
-		tasks: ['copy:dev']
-    	    },
+    	    markup: {
+        		files: ['client/src/*.html'],
+        		tasks: ['copy:dev']
+            },
             scripts: {
                 files: ['client/templates/*.hbs', 'client/src/**/*.js'],
                 tasks: ['clean:dev', 'browserify:app', 'concat', 'copy:dev']
             },
             less: {
-                files: ['client/styles/**/*.less'],
+                files: ['client/styles/**/*.less', 'client/css/*.css'],
                 tasks: ['less:transpile', 'copy:dev']
             },
             test: {

@@ -1,3 +1,5 @@
 div.off-canvas-wrap, div.inner-wrap {
 	height: 100%;
 }
+
+.date-modified { font-size: 0.8em; color: #555}
