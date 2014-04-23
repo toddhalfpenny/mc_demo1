@@ -93,9 +93,9 @@ module.exports = function(grunt) {
         less: {
             transpile: {
                 files: {
-                    'build/<%= pkg.name %>.css': [
+                    'build/<%= pkg.name %>_mccssRes<%= pkg.version %>.css': [
                         'client/styles/reset.css',
-                        'client/styles/app.css',
+                        'client/css/*.css',
                         'client/requires/*/css/*',
                         'client/styles/less/main.less'
                     ]
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
         },
 
         concat: {
-            'build/<%= pkg.name %>.js': ['build/vendor.js', 'build/app.js']
+            'build/<%= pkg.name %>_jsRes<%= pkg.version %>.js': ['build/vendor.js', 'build/app.js']
         },
 
         copy: {
@@ -113,16 +113,11 @@ module.exports = function(grunt) {
                     src: 'client/src/index.html',
                     dest: 'public/index.html'
                 }, {
-                    expand: true,
-                    cwd: 'client/css/',
-                    src: '**',
-                    dest: 'public/css/'
+                    src: 'build/<%= pkg.name %>_jsRes<%= pkg.version %>.js',
+                    dest: 'public/js/<%= pkg.name %>_jsRes<%= pkg.version %>.js'
                 }, {
-                    src: 'build/<%= pkg.name %>.js',
-                    dest: 'public/js/<%= pkg.name %>.js'
-                }, {
-                    src: 'build/<%= pkg.name %>.css',
-                    dest: 'public/css/<%= pkg.name %>.css'
+                    src: 'build/<%= pkg.name %>_mccssRes<%= pkg.version %>.css',
+                    dest: 'public/css/<%= pkg.name %>_mccssRes<%= pkg.version %>.css'
                 }, {
                     src: 'client/img/*',
                     dest: 'public/img/'

@@ -1,7 +1,7 @@
 {
-  "name": "MC5",
+  "name": "MobileCaddyDemo",
   "description": "Mobile Caddy Demo Expenses App 5",
-  "version": "0.0.1",
+  "version": "002",
   "author": "Todd Halfpenny",
   "repository": {
     "type": "git",
