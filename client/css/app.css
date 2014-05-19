@@ -1,5 +1,11 @@
+#nav-bar, aside ul.off-canvas-list li label {
+	background: #12527b;
+	color: #fff;
+}
+
 div.off-canvas-wrap, div.inner-wrap {
 	height: 100%;
 }
+div.off-canvas-wrap {overflow: auto;}
 
 .date-modified { font-size: 0.8em; color: #555}
